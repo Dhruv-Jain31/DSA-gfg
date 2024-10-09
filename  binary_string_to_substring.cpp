@@ -8,4 +8,55 @@ Input:
 S = "0100110101"
 Output: 4
 Explanation: 
-The required substrings are 01, 0011, 01 and 01*/.
+The required substrings are 01, 0011, 01 and 01*/
+
+//{ Driver Code Starts
+/* Driver program to test above function */
+
+#include<bits/stdc++.h>
+using namespace std;
+
+// } Driver Code Ends
+class Solution {
+public:
+    int maxSubStr(string str){
+        //Write your code here
+        int count_0 = 0, count_1 = 0;
+        int cnt = 0;
+        
+        for(int i = 0; i < str.size(); i++){
+            if(str[i] == '0'){
+                count_0++;
+            }
+            else{
+                count_1++;
+            }
+            if(count_0 == count_1){
+                cnt++;
+            }
+        }
+        if(count_1 != count_0){
+            return -1;
+        }
+        return cnt;
+    }
+};
+
+
+//{ Driver Code Starts.
+int main()
+{
+	int t;
+	cin>>t;
+	while(t--)
+	{
+	    string str;
+	    cin >> str;
+	    Solution ob;
+	    int ans = ob.maxSubStr(str);
+	    cout << ans<<endl;
+	}
+	return 0;
+}
+
+// } Driver Code Ends
